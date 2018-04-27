@@ -1,5 +1,6 @@
 require("date")
 require_relative("../db/sql_runner")
+require_relative("./comment")
 
 class Post
   attr_reader :id, :posted_on
@@ -17,6 +18,13 @@ class Post
     values = [@title, @body, @posted_on]
     result = SqlRunner.run(sql, values)
     @id = result.first["id"].to_i
+  end
+
+  def comments
+    sql = "SELECT * FROM comments WHERE post_id = $1"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| Comment.new(result) }
   end
 
   def self.all
