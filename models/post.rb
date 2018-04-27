@@ -33,6 +33,13 @@ class Post
     return results.map { |result| Post.new(result) }
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM posts WHERE id = $1"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    return Post.new(result.first)
+  end
+
   def self.delete_all
     sql = "DELETE FROM posts"
     SqlRunner.run(sql)

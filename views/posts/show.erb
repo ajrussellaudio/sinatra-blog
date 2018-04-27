@@ -1,0 +1,19 @@
+<article>
+  <header>
+    <h1><%= @post.title %></h1>
+    <time>Posted on <%= @post.posted_on.to_s %></time>
+  </header>
+  <main>
+    <p><%= @post.body %></p>
+  </main>
+  <section id="comments">
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li>
+          <p><%= comment.body %></p>
+          <time><%= comment.posted_on %></time>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</article>
