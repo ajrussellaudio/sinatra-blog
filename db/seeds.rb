@@ -2,6 +2,7 @@ require_relative("../models/post")
 require_relative("../models/comment")
 require("pry-byebug")
 
+Comment.delete_all
 Post.delete_all
 
 post1 = Post.new({

@@ -17,4 +17,15 @@ class Comment
     @id = result.first["id"].to_i
   end
 
+  def self.all
+    sql = "SELECT * FROM comments"
+    results = SqlRunner.run(sql)
+    return results.map { |result| Comment.new(result) }
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM comments"
+    SqlRunner.run(sql)
+  end
+
 end
