@@ -31,4 +31,10 @@ class CommentTest < MiniTest::Test
     assert_equal(0, @comment.id)
   end
 
+  def test_can_edit_comment
+    new_text = "Changed text"
+    @comment.body = new_text
+    assert_equal(new_text, @comment.body)
+  end
+
 end
