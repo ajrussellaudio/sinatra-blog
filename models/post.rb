@@ -2,14 +2,14 @@ require("date")
 require_relative("../db/sql_runner")
 
 class Post
-  attr_reader :id, :date
+  attr_reader :id, :date_posted
   attr_accessor :title, :body
 
   def initialize(options)
     @id = options["id"].to_i
     @title = options["title"]
     @body = options["body"]
-    @date = Date.parse(options["date"]) if options["date"]
+    @date_posted = Date.parse(options["date_posted"]) if options["date_posted"]
   end
 
   def save

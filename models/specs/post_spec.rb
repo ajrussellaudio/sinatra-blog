@@ -10,7 +10,7 @@ class PostTest < MiniTest::Test
     @post = Post.new({
       "title" => "Test Post",
       "body" => @lorem,
-      "date" => Date.today.to_s
+      "date_posted" => Date.today.to_s
     })
   end
 
@@ -23,7 +23,7 @@ class PostTest < MiniTest::Test
   end
 
   def test_has_date
-    assert_equal(Date.today, @post.date)
+    assert_equal(Date.today, @post.date_posted)
   end
 
   def test_has_id
