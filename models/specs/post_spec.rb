@@ -7,7 +7,11 @@ require_relative("../post")
 class PostTest < MiniTest::Test
   def setup
     @lorem = "Lorem ipsum dolor sit amet, eos ei everti volutpat convenire. No viris noluisse argumentum sea. Ne sit causae apeirian accusamus, sed case ullum quando ei. Civibus accommodare at vis."
-    @post = Post.new("Test Post", @lorem, Date.today)
+    @post = Post.new({
+      "title" => "Test Post",
+      "body" => @lorem,
+      "date" => Date.today.to_s
+    })
   end
 
   def test_has_title
@@ -22,6 +26,10 @@ class PostTest < MiniTest::Test
     assert_equal(Date.today, @post.date)
   end
 
+  def test_has_id
+    assert_equal(0, @post.id)
+  end
+
   def test_can_edit_title
     @post.title = "Edited title"
     assert_equal("Edited title", @post.title)
@@ -32,4 +40,5 @@ class PostTest < MiniTest::Test
     @post.body = new_text
     assert_equal(new_text, @post.body)
   end
+
 end
