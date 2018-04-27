@@ -17,6 +17,13 @@ class Comment
     @id = result.first["id"].to_i
   end
 
+  def get_post
+    sql = "SELECT * FROM posts WHERE id = $1"
+    values = [@post_id]
+    results = SqlRunner.run(sql, values)
+    return Post.new(results.first)
+  end
+
   def self.all
     sql = "SELECT * FROM comments"
     results = SqlRunner.run(sql)
