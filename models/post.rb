@@ -13,8 +13,8 @@ class Post
   end
 
   def save
-    sql = "INSERT INTO posts (title, body) VALUES ($1, $2) RETURNING id"
-    values = [@title, @body]
+    sql = "INSERT INTO posts (title, body, posted_on) VALUES ($1, $2, $3) RETURNING id"
+    values = [@title, @body, @posted_on]
     result = SqlRunner.run(sql, values)
     @id = result.first["id"].to_i
   end
