@@ -43,5 +43,10 @@ comment4 = Comment.new({
   "post_id" => post2.id
 })
 
+comment1.save
+comment2.save
+comment3.save
+comment4.save
+
 binding.pry
 nil
