@@ -21,4 +21,15 @@ class PostTest < MiniTest::Test
   def test_has_date
     assert_equal(Date.today, @post.date)
   end
+
+  def test_can_edit_title
+    @post.title = "Edited title"
+    assert_equal("Edited title", @post.title)
+  end
+
+  def test_can_edit_body
+    new_text = "Ridens audire saperet an mei. Te dicam perfecto vis. Per prompta impedit imperdiet et, ei sea idque quidam impedit, nisl zril praesent te mel. Verterem vituperatoribus ad qui. Mei partiendo consulatu an."
+    @post.body = new_text
+    assert_equal(new_text, @post.body)
+  end
 end
