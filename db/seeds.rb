@@ -11,3 +11,6 @@ post2 = Post.new({
   "body" => "Ridens audire saperet an mei. Te dicam perfecto vis. Per prompta impedit imperdiet et, ei sea idque quidam impedit, nisl zril praesent te mel. Verterem vituperatoribus ad qui. Mei partiendo consulatu an.",
   "date" => Date.today.to_s
 })
+
+post1.save
+post2.save
