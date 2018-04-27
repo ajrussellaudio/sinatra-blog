@@ -1,4 +1,5 @@
 require_relative("../models/post")
+require("pry-byebug")
 
 post1 = Post.new({
   "title" => "First Post",
@@ -14,3 +15,6 @@ post2 = Post.new({
 
 post1.save
 post2.save
+
+binding.pry
+nil
