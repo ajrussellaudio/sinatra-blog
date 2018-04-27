@@ -1,6 +1,8 @@
 require_relative("../models/post")
 require("pry-byebug")
 
+Post.delete_all
+
 post1 = Post.new({
   "title" => "First Post",
   "body" => "Lorem ipsum dolor sit amet, eos ei everti volutpat convenire. No viris noluisse argumentum sea. Ne sit causae apeirian accusamus, sed case ullum quando ei. Civibus accommodare at vis.",

@@ -9,7 +9,7 @@ class Post
     @id = options["id"].to_i
     @title = options["title"]
     @body = options["body"]
-    @date = Date.parse(options["date"])
+    @date = Date.parse(options["date"]) if options["date"]
   end
 
   def save
@@ -17,5 +17,16 @@ class Post
     values = [@title, @body]
     result = SqlRunner.run(sql, values)
     @id = result.first["id"].to_i
+  end
+
+  def self.all
+    sql = "SELECT * FROM posts"
+    results = SqlRunner.run(sql)
+    return results.map { |result| Post.new(result) }
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM posts"
+    SqlRunner.run(sql)
   end
 end
