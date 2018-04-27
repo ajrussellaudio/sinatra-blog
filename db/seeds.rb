@@ -1,4 +1,5 @@
 require_relative("../models/post")
+require_relative("../models/comment")
 require("pry-byebug")
 
 Post.delete_all
@@ -17,6 +18,30 @@ post2 = Post.new({
 
 post1.save
 post2.save
+
+comment1 = Comment.new({
+  "body" => "Rubbish.",
+  "posted_on" => Date.today.to_s,
+  "post_id" => post1.id
+})
+
+comment2 = Comment.new({
+  "body" => "I agree.",
+  "posted_on" => Date.today.to_s,
+  "post_id" => post1.id
+})
+
+comment3 = Comment.new({
+  "body" => "lol",
+  "posted_on" => Date.today.to_s,
+  "post_id" => post2.id
+})
+
+comment4 = Comment.new({
+  "body" => "Delete your blog",
+  "posted_on" => Date.today.to_s,
+  "post_id" => post2.id
+})
 
 binding.pry
 nil
