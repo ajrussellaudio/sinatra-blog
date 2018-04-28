@@ -6,8 +6,12 @@ class Comment
   def initialize(options)
     @id = options["id"].to_i
     @body = options["body"]
-    @posted_on = Date.parse(options["posted_on"])
     @post_id = options["post_id"].to_i
+    if options["posted_on"]
+      @posted_on = Date.parse(options["posted_on"])
+    else
+      @posted_on = Date.today
+    end
   end
 
   def save

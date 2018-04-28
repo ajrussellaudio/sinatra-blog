@@ -23,6 +23,14 @@ class CommentTest < MiniTest::Test
     assert_equal(Date.today, @comment.posted_on)
   end
 
+  def test_has_date__default
+    comment_no_date = Comment.new({
+      "body" => @sample_text,
+      "post_id" => "1"
+    })
+    assert_equal(Date.today, comment_no_date.posted_on)
+  end
+
   def test_has_post_id
     assert_equal(1, @comment.post_id)
   end
