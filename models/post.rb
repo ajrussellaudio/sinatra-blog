@@ -31,6 +31,12 @@ class Post
     return results.map { |result| Comment.new(result) }
   end
 
+  def delete
+    sql = "DELETE FROM posts WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.all
     sql = "SELECT * FROM posts"
     results = SqlRunner.run(sql)

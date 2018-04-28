@@ -12,3 +12,9 @@ post "/admin" do
   post.save
   redirect to "/admin"
 end
+
+post "/admin/:id/delete" do
+  post = Post.find(params[:id])
+  post.delete
+  redirect to "/admin"
+end
