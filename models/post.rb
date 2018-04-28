@@ -31,6 +31,12 @@ class Post
     return results.map { |result| Comment.new(result) }
   end
 
+  def update
+    sql = "UPDATE posts SET (title, body) = ($1, $2) WHERE id = $3"
+    values = [@title, @body, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def delete
     sql = "DELETE FROM posts WHERE id = $1"
     values = [id]

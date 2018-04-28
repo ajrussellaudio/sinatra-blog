@@ -5,7 +5,7 @@
   <h3 class="post-title"><%= post.title %></h3>
   <ul class="admin-functions">
     <li><a href="/posts/<%= post.id %>">View</a></li>
-    <li><a href="/admin/<%= post.id %>/edit">Edit</a></li>
+    <li><a href="/admin/<%= post.id %>">Edit</a></li>
     <li>
       <form action="/admin/<%= post.id %>/delete" method="post">
         <input type="submit" value="Delete">
