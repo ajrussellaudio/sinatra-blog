@@ -28,10 +28,23 @@ class Comment
     return Post.new(results.first)
   end
 
+  def delete
+    sql = "DELETE FROM comments WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.all
     sql = "SELECT * FROM comments"
     results = SqlRunner.run(sql)
     return results.map { |result| Comment.new(result) }
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM comments WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Comment.new(results.first)
   end
 
   def self.delete_all

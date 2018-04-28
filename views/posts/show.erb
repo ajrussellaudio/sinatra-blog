@@ -12,6 +12,10 @@
         <li>
           <p><%= comment.body %></p>
           <time><%= comment.posted_on %></time>
+          <form class="delete-comment" action="/comments/<%= comment.id %>/delete" method="post">
+            <input type="hidden" name="post_id" value="<%= @post.id %>">
+            <input type="submit" value="Delete">
+          </form>
         </li>
       <% end %>
     </ul>
