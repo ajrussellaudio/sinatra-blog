@@ -10,7 +10,11 @@ class Post
     @id = options["id"].to_i
     @title = options["title"]
     @body = options["body"]
-    @posted_on = Date.parse(options["posted_on"]) if options["posted_on"]
+    if options["posted_on"]
+      @posted_on = Date.parse(options["posted_on"])
+    else
+      @posted_on = Date.today
+    end
   end
 
   def save

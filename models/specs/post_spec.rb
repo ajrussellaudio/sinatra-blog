@@ -26,6 +26,14 @@ class PostTest < MiniTest::Test
     assert_equal(Date.today, @post.posted_on)
   end
 
+  def test_has_date__default
+    post_no_date = Post.new({
+      "title" => "Test Post",
+      "body" => @lorem
+    })
+    assert_equal(Date.today, post_no_date.posted_on)
+  end
+
   def test_has_id
     assert_equal(0, @post.id)
   end
